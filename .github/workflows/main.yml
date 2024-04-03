@@ -1,5 +1,10 @@
 name: pr1-node-backend
-on: push
+on:
+  push:
+    branches:
+      - main
+      - develop
+
 jobs:
   backend:
     runs-on: ubuntu-latest
