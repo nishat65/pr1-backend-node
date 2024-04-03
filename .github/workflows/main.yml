@@ -1,10 +1,14 @@
 name: pr1-node-backend
-on: workflow_dispatch
+on: push
 jobs:
   backend:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Success
-        run: echo 'Success'
-      - name: Print Goodbye
-        run: echo 'Goodbye'
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Install Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
