@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  app:
+    image: 'pr1:v1'
+    container_name: 'pr1-app'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:3000
+    volumes:
+      - pr1_vol:/app/
+      - .:/app/
+      - /app/node_modules
+    env_file:
+      - .env
+    networks:
+      - pr1-network
+
+volumes:
+  pr1_vol:
+
+networks:
+  pr1-network:
